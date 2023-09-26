@@ -20,4 +20,16 @@ $(document).ready(function () {
     $('.amenities h4').text(amenities)
     }
     )
-  })
+  
+  const div_api = $('#api_status')
+
+  $.ajax({
+    url: 'http://localhost:5001/api/v1/status',
+    method: 'GET',
+    success: function(data) {
+      if (data.status === 'OK') {
+        div_api.addClass('available')
+      }
+    },
+  });
+})
